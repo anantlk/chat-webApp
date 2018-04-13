@@ -17,13 +17,36 @@ const userSchema = new Schema({
     password:{
     	type:String,
     	required:true
+    }
+    phone:{
+    	type:String,
+    	required:true
     },
     friends:{
+    	id:{
+    		type:String
+    	},
     	name:{
     		type:String
-    	}
+    	},
     	status:{
     		type:String
+    	},
+    	message:{
+    		data:{
+    			type:String
+    		},
+    		time:{
+    			type:String
+    		}
+    	},
+    	reply:{
+    		data:{
+    			type:String
+    		},
+    		time:{
+    			type:String
+    		}
     	}
     }
 });
