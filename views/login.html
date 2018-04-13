@@ -4,12 +4,27 @@
       <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <style>
+      	body
+      	{
+      		overflow: hidden;
+      	}
+      	.chat{
+      		border:2px solid black;
+      		padding:10px;
+      		text-align: center;
+      	}
+      	input{
+      		margin:10px;
+      	}
+      </style>
 </head>
 <body>
 <div class="row" ng-app="login">
-<form class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-3">
-<input type="email" ng-model="email"></input>
-<input type="password" ng-model="password"></input>
+<form class="chat col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
+<h1>Chat Now</h1>
+<input type="email" ng-model="email" placeholder="Email"></input><br>
+<input type="password" ng-model="password" placeholder="Password"></input><br>
 <button type="button">Submit</button>
 </form>
 </div>
