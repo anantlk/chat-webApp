@@ -10,10 +10,6 @@ const userSchema = new Schema({
         unique : true,
         required : true,
     },
-    handle:{
-    	type:String,
-    	required:true
-    },
     password:{
     	type:String,
     	required:true
@@ -28,25 +24,6 @@ const userSchema = new Schema({
     	},
     	name:{
     		type:String
-    	},
-    	status:{
-    		type:String
-    	},
-    	message:{
-    		data:{
-    			type:String
-    		},
-    		time:{
-    			type:String
-    		}
-    	},
-    	reply:{
-    		data:{
-    			type:String
-    		},
-    		time:{
-    			type:String
-    		}
     	}
     }
 });

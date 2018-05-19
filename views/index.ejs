@@ -26,7 +26,7 @@
 	    console.log("Ready!!");
 	    var socket = io();
 	    $('form').submit(function(){	
-	      socket.emit('message', $('#m').val());
+	      socket.emit('pvt1', $('#m').val());
 	      //$("#messages").append($('<li>').text($("#m").val()));
 	      $('#m').val('');
 	      return false;
