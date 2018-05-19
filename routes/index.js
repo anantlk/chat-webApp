@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-	res.render('index', { title: 'Chat App' });
+	res.render('chat', { title: 'Chat App' });
 });
 
 router.get("/send",(req,res) => {

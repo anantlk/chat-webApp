@@ -17,3 +17,4 @@ module.exports=(io) => {
 			io.emit("message",msg);
 		});
 	});
+}
