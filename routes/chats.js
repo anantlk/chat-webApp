@@ -3,7 +3,7 @@ var router = express.Router()
 var User = require('../models/users');
 var arr=[]
 router.get("/",(req,res) => {
-	console.log(req.user.username);
+	//console.log(req.user.username);
 	User.find({},{username:1,_id:0}).exec()
 		.then((result) => {
 			console.log(result);
@@ -13,7 +13,7 @@ router.get("/",(req,res) => {
 					arr.push(data);
 				}
 			})
-			res.json({registered:arr});
+			res.json({result:arr});
 		})
 		.catch((err) => {
 			console.log(err);
