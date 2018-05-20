@@ -14,7 +14,7 @@ const userSchema = new Schema({
     password:{
     	type:String,
     	required:true
-    }
+    },
     phone:{
     	type:String,
     	required:true
@@ -28,9 +28,15 @@ const userSchema = new Schema({
     	}
     }
 });
+
 userSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
+
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password,this.password);
+};
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

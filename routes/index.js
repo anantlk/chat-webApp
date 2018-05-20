@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var passport=require('passport');
 
-var routes=(passport) => {
 router.get('/', (req, res, next) => {
 	res.render('index', { title: 'Chat App' });
 });
@@ -15,7 +15,8 @@ router.get("/register",(req,res) => {
 });
 
 router.get("/chat",(req,res) => {
-	res.render('chat',{user:req.user,title:'chat'});
+	console.log(req.user.username);
+	res.render('chat',{user:req.user.username,title:'chat'});
 });
 
 router.post("/register",passport.authenticate('newRegister',{
@@ -24,8 +25,12 @@ router.post("/register",passport.authenticate('newRegister',{
 	failureFlash:true
 })
 );
-};
 
+router.post("/login",passport.authenticate('login',{
+	successRedirect:'/chat',
+	failureRedirect:'/',
+	failureFlash:true
+})
+);
 
-
-module.exports=routes;
+module.exports=router;

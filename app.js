@@ -5,29 +5,29 @@ var logger = require('morgan');
 var passport=require('passport');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var index = require('./routes/index')(passport);
+var index = require('./routes/index');
 var app = express();
 var server=require('http').Server(app);
 var io=require('socket.io')(server);
 var flash=require('connect-flash');
-var session      = require('express-session');
+var session = require('express-session');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+require('./utilities/connectToDatabase');
+console.log("Hello");
+require('./config/passport')(passport);
 app.use(session({secret:"easyChat"}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./utilities/connectToDatabase');
 app.use((req,res,next) => {
 	res.io=io;
 	next();
