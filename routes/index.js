@@ -14,20 +14,15 @@ router.get("/register",(req,res) => {
 	res.render('register',{title:'Register'});
 });
 
-router.get("/chat",(req,res) => {
-	console.log(req.user.username);
-	res.render('chat',{user:req.user.username,title:'chat'});
-});
-
 router.post("/register",passport.authenticate('newRegister',{
-	successRedirect:'/chat',
+	successRedirect:'/login',
 	failureRedirect:'/',
 	failureFlash:true
 })
 );
 
 router.post("/login",passport.authenticate('login',{
-	successRedirect:'/chat',
+	successRedirect:'/login',
 	failureRedirect:'/',
 	failureFlash:true
 })

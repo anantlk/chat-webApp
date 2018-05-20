@@ -6,6 +6,7 @@ var passport=require('passport');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
+var chat = require('./routes/chats');
 var app = express();
 var server=require('http').Server(app);
 var io=require('socket.io')(server);
@@ -36,6 +37,7 @@ app.use((req,res,next) => {
 require("./routes/io.js")(io);
 
 app.use('/', index);
+app.use('/chat',chat);
 // app.use('/users', users);
 
 // catch 404 and forward to error handler
