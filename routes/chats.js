@@ -14,6 +14,7 @@ router.get("/",(req,res) => {
 				}
 			})
 			res.json({result:arr});
+			arr.splice(0,arr.length);
 		})
 		.catch((err) => {
 			console.log(err);
