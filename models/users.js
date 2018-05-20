@@ -26,6 +26,14 @@ const userSchema = new Schema({
     	name:{
     		type:String
     	}
+    },
+    requests:{
+        id:{
+            type:String
+        },
+        name:{
+            type:String
+        }
     }
 });
 
