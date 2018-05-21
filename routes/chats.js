@@ -24,8 +24,32 @@ router.get("/",(req,res) => {
 	//res.render('chat',{user:req.user.username,title:'chat'});
 });
 
+// Send Friend Request Route
+
 router.post("/sendRequest",(req,res) => {
 	User.updateOne({'email':req.body.email},{$push:{'requests':{'email':req.user.email,'name':req.user.username}}}).exec()
+	.then((user) => {
+		if(user)
+		{
+			console.log("User Updated");
+			res.json({success:true});
+		}
+		else
+		{
+			console.log("User not found");
+			res.json({success:false});
+		}
+	})
+	.catch((err) => {
+		console.log(err);
+		res.json({success:false});
+	});
+});
+
+// Ignore Friend Request Route
+
+router.post("/ignoreRequest",(req,res) => {
+	User.updateOne({'email':req.user.email},{$pull:{'requests':{'email':req.body.email}}}).exec()
 	.then((user) => {
 		if(user)
 		{
