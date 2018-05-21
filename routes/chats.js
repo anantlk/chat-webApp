@@ -9,7 +9,7 @@ router.get("/",(req,res) => {
 		.then((result) => {
 			console.log(result);
 			result.forEach((data) => {
-				if(data.username!="Anant")
+				if(data.username!=req.user.username)
 				{
 					arr.push(data);
 				}
@@ -25,7 +25,7 @@ router.get("/",(req,res) => {
 });
 
 router.post("/sendRequest",(req,res) => {
-	User.updateOne({'email':req.user.email},{$set:{'requests.email':req.body.email,'requests.name':req.body.name}}).exec()
+	User.updateOne({'email':req.body.email},{$push:{'requests':{'email':req.user.email,'name':req.user.username}}}).exec()
 	.then((user) => {
 		if(user)
 		{

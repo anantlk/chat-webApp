@@ -19,22 +19,22 @@ const userSchema = new Schema({
     	type:String,
     	required:true
     },
-    friends:{
+    friends:[{
     	email:{
     		type:String
     	},
     	name:{
     		type:String
     	}
-    },
-    requests:{
+    }],
+    requests:[{
         email:{
             type:String
         },
         name:{
             type:String
         }
-    }
+    }]
 });
 
 userSchema.methods.generateHash = function(password) {
