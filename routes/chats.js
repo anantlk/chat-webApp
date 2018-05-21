@@ -5,7 +5,7 @@ var arr=[]
 
 router.get("/",(req,res) => {
 	//console.log(req.user.username);
-	User.find({},{username:1,_id:0}).exec()
+	User.find({},{username:1,email:1,_id:0}).exec()
 		.then((result) => {
 			console.log(result);
 			result.forEach((data) => {
@@ -24,5 +24,13 @@ router.get("/",(req,res) => {
 	//res.render('chat',{user:req.user.username,title:'chat'});
 });
 
-router.get("")
+router.post("/sendRequest",(req,res) => {
+	User.updateOne({'email':req.email},{}).exec()
+	.then((user) => {
+		if(user)
+		{
+			
+		}
+	})
+});
 module.exports=router;

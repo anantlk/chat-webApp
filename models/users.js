@@ -20,7 +20,7 @@ const userSchema = new Schema({
     	required:true
     },
     friends:{
-    	id:{
+    	email:{
     		type:String
     	},
     	name:{
@@ -28,7 +28,7 @@ const userSchema = new Schema({
     	}
     },
     requests:{
-        id:{
+        email:{
             type:String
         },
         name:{
