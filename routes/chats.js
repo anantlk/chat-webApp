@@ -25,12 +25,21 @@ router.get("/",(req,res) => {
 });
 
 router.post("/sendRequest",(req,res) => {
-	User.updateOne({'email':req.email},{}).exec()
+	User.updateOne({'email':req.user.email},{$set:{'requests.email':req.body.email,'requests.name':req.body.name}}).exec()
 	.then((user) => {
 		if(user)
 		{
-			
+			console.log("User Updated");
+			res.json({success:true});
+		}
+		else
+		{
+			console.log("User not found");
+			res.json({success:false});
 		}
 	})
+	.catch((err) => {
+		res.json({success:false});
+	});
 });
 module.exports=router;
