@@ -20,8 +20,6 @@ router.get("/",(req,res) => {
 		.catch((err) => {
 			console.log(err);
 		});
-
-	//res.render('chat',{user:req.user.username,title:'chat'});
 });
 
 // Send Friend Request Route
@@ -66,4 +64,5 @@ router.post("/ignoreRequest",(req,res) => {
 		res.json({success:false});
 	});
 });
+
 module.exports=router;
