@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router()
 var User = require('../models/users');
 var arr=[]
+
 router.get("/",(req,res) => {
 	//console.log(req.user.username);
 	User.find({},{username:1,_id:0}).exec()
@@ -23,4 +24,5 @@ router.get("/",(req,res) => {
 	//res.render('chat',{user:req.user.username,title:'chat'});
 });
 
-module.exports=router
+router.get("")
+module.exports=router;

@@ -6,26 +6,22 @@ router.get('/', (req, res, next) => {
 	res.render('index', { title: 'Chat App' });
 });
 
-router.get("/login",(req,res) => {
-	res.render('login',{title:'Login'});
-});
-
-router.get("/register",(req,res) => {
+router.route("/register").get((req,res) => {
 	res.render('register',{title:'Register'});
-});
-
-router.post("/register",passport.authenticate('newRegister',{
+})
+.post(passport.authenticate('newRegister',{
 	successRedirect:'/chat',
 	failureRedirect:'/',
 	failureFlash:true
-})
-);
+}));
 
-router.post("/login",passport.authenticate('login',{
+router.route("/login").get((req,res) => {
+	res.render('login',{title:'Login'});
+})
+.post(passport.authenticate('login',{
 	successRedirect:'/chat',
 	failureRedirect:'/',
 	failureFlash:true
-})
-);
+}));
 
 module.exports=router;
